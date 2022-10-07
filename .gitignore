@@ -1,0 +1,10 @@
+################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+.vs
+/ExpenseService/bin
+/ExpenseService/obj
+/ExpenseServiceTest/bin
+/ExpenseServiceTest/obj
+.idea
