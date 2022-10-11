@@ -11,10 +11,10 @@ namespace Expense.Service.Test
         public void Should_return_internal_expense_type_if_project_is_internal()
         {
             // given
-            Project project = new Project(ProjectType.INTERNAL, "Project Internal");
+            var project = new Project(ProjectType.INTERNAL, "Project Internal");
 
             // when
-            ExpenseType expenseType = ExpenseService.GetExpenseCodeByProjectTypeAndName(project);
+            var expenseType = ExpenseService.GetExpenseCodeByProjectTypeAndName(project);
 
             // then
             Assert.Equal(ExpenseType.INTERNAL_PROJECT_EXPENSE, expenseType);
@@ -24,8 +24,13 @@ namespace Expense.Service.Test
         public void Should_return_expense_type_A_if_project_is_external_and_name_is_project_A()
         {
             // given
+            var project = new Project(ProjectType.EXTERNAL, "Project A");
+
             // when
+            var expenseType = ExpenseService.GetExpenseCodeByProjectTypeAndName(project);
+
             // then
+            Assert.Equal(ExpenseType.EXPENSE_TYPE_A, expenseType);
         }
 
         [Fact]
