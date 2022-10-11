@@ -37,8 +37,13 @@ namespace Expense.Service.Test
         public void Should_return_expense_type_B_if_project_is_external_and_name_is_project_B()
         {
             // given
+            var project = new Project(ProjectType.EXTERNAL, "Project B");
+
             // when
+            var expenseType = ExpenseService.GetExpenseCodeByProjectTypeAndName(project);
+
             // then
+            Assert.Equal(ExpenseType.EXPENSE_TYPE_B, expenseType);
         }
 
         [Fact]
