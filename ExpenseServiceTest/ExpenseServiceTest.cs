@@ -64,8 +64,15 @@ namespace Expense.Service.Test
         public void Should_throw_unexpected_project_exception_if_project_is_invalid()
         {
             // given
+            Project project = new Project(ProjectType.UNEXPECTED_PROJECT_TYPE, "Other Project");
+
             // when
+            // NOTE: The Action passed to Assert.Throws needs to be a delegate that matches the Action signature. Specifically: public delegate void Action(); So the Action needs to be a method that takes no parameters and returns void.
+            void Action() => ExpenseService.GetExpenseCodeByProjectTypeAndName(project);
+
             // then
+            var exception = Assert.Throws<UnexpectedProjectTypeException>(Action);
+            Assert.Equal("You enter invalid project type", exception.Message);
         }
     }
 }
