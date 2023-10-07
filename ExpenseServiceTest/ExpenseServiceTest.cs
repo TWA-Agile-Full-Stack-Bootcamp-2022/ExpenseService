@@ -13,6 +13,7 @@ namespace Expense.Service.Test
         {
             // given
             Project project = new Project(ProjectType.INTERNAL, "Internal Project");
+
             // when
             ExpenseType expenseType = ExpenseService.GetExpenseCodeByProjectTypeAndName(project);
 
@@ -24,8 +25,13 @@ namespace Expense.Service.Test
         public void Should_return_expense_type_A_if_project_is_external_and_name_is_project_A()
         {
             // given
+            Project project = new Project(ProjectType.EXTERNAL, "Project A");
+
             // when
+            ExpenseType expenseType = ExpenseService.GetExpenseCodeByProjectTypeAndName(project);
+
             // then
+            Assert.Equal(ExpenseType.EXPENSE_TYPE_A, expenseType);
         }
 
         [Fact]
